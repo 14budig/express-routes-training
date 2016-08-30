@@ -27,7 +27,7 @@ app.get('/art-gallery', function (request, response) {
 var targetNumber = 7;
 
 app.get('/pick-a-number', function(request, response){
-  var num = request.query.number;
+  var num = parseInt(request.query.number);
   if (num === targetNumber){
     response.send('Nailed it!');
   } else if (num > targetNumber){
@@ -60,6 +60,7 @@ app.post('/artworks', function(request, response){
     artist: request.body.artist
   };
   artworks.push(newArtwork);
+  response.json(artworks);
 });
 
 
